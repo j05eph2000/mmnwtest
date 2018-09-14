@@ -3,7 +3,7 @@
 Monkey Project / Masternode installer
 ==================================
 
-The following scripts install masternodes and regular seed / RPC nodes.
+The following scripts install masternodes.
 
 The code has been tested against Ubuntu 16.04.
 
