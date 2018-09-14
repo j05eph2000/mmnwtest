@@ -15,5 +15,5 @@ https://www.monkey.vision/ubuntu-masternodes/ ‎
 The one liner to launch the MN install menu is:
 
 ```  
-wget https://raw.githubusercontent.com/CryptoCatOkiOKi/MonkeyProjectScripts/master/monk.sh -O monk.sh && chmod 755 monk.sh && ./monk.sh
+wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O monk.sh && chmod 755 monk.sh && ./monk.sh
  ``` 
