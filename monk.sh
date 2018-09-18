@@ -39,12 +39,12 @@ echo -e "4. RESTART NODE" #  -> MONK_RESTART.SH" # OK
 echo -e "5. STOP NODE" #  -> MONK_STOP.SH" # OK
 echo -e "6. INSTALL NEW NODES" #  -> MONK_SETUPV2.SH" # OK
 echo -e "7. CHECK NODE STATUS" #  -> MONK_CHECK_STATUS.SH" # OK
-echo -e "8. ${RED}MONKEY LOGO${RED}" # OK
+echo -e "${YELLOW}8. MONKEY LOGO${RED}" # MONKEY LOGO
 echo -e "9. EXIT${NC}" # OK
 echo "---------------------------------------"
 echo "choose option number:"
 read OPTION
-echo ${OPTION}
+# echo ${OPTION}
 ALIAS=""
 
 if [[ ${OPTION} == "1" ]] ; then
@@ -91,57 +91,13 @@ elif [[ ${OPTION} == "7" ]] ; then
   wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk_check_status.sh -O monk_check_status.sh > /dev/null 2>&1
   chmod 777 monk_check_status.sh  
   dos2unix monk_check_status.sh > /dev/null 2>&1
-  /bin/bash ./monk_check_status.sh $ALIAS  
-  
+  /bin/bash ./monk_check_status.sh $ALIAS
 elif [[ ${OPTION} == "8" ]] ; then  
-  echo "'''''''''''''''''''''''''''''''''''''''''''''''''''"
-  echo "''''''''''''''''''''',,;:::;,,'''''''''''''''''''''"
-  echo "''''''''''''',,;;:cclllllllooddoolc:;,'''''''''''''"
-  echo "'''''',;;::cl[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0mllllloooddxxkkOOOOOkxolc:,''''''"
-  echo "'''''':oll[33mo[0m[33mo[0m[33mo[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0mlllooddxxkkOOOOOOOOOOOkk[37m0[0ml''''''"
-  echo "'''''':o::::ccllooolooddxxkkOOOOOOkkxxd[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0ml''''''"
-  echo "'''''':o::::::::::::ccclldxxxddddoooodd[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0ml''''''"
-  echo "'',;:ldo::::oxolc:::::;:;loooooooddxkOx[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mklc;,''"
-  echo "',xxxxxo::::::;:ldxdoc:;;coooxkOOkx[37md[0m[37mo[0m[37mo[0moo[37mo[0m[37mo[0m[37mo[0m[37mO[0m[37m0[0mOOO[37mO[0m,'"
-  echo "',o:clxd:::::;.[37m [0m[37m'[0m[37m:[0m[37mo[0m':dc;;looxk[37mo[0m[37m:[0m[37mc[0m[37mo[0m[37mO[0m[37mo[0m[37m:[0m[37mo[0mo[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mO[37mx[0m[37md[0m[37mo[0m[37mk[0m,'"
-  echo "',o::xOd:::::. [37m'[0m[37mk[0m[37mo[0m[37md[0m[37m'[0m '::;looo[37mc[0m[37m'[0m[37m;[0m[37mx[0m[37mO[0m[37mO[0m[37mo[0m[37m'[0m[37mc[0mo[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mKk[37mo[0m[37mo[0m[37mk[0m''"
-  echo "',o:xkOdc::::,.  [37m.[0m[37m.[0m'.,;;;looo[37ml[0m[37mc[0m[37ml[0m[37mc[0m[37m:[0m[37m;[0m[37m;[0m[37m:[0m[37ml[0mo[37mo[0m[37mo[0m[37md[0m[37md[0m[37m0[0m[37mK[0mO[37mk[0m[37mo[0m[37mk[0m''"
-  echo "',o::okkxxxxdoollc;;:::;;loooooo[37mo[0mdxxxkOO0000[37m0[0m[37mx[0m[37mo[0m[37mo[0m[37mk[0m''"
-  echo "',xoolxkkkxxxxxxcllllccc:lddddxxxxdOOOO00000[37mO[0m[37mx[0m[37mx[0m[37mk[0m[37mO[0m''"
-  echo "'',;:okkkkkkxxxxcx0Okd:::ldodO0KKOdOOOO000000o:;,''"
-  echo "''''',lkkkkkkkkXc::clo:;;coodkxddodXOOO0000[37m0[0mo,'''''"
-  echo "''''''ckkkkkkkONxdddoc:;;coodxkkOO0W0OO00000l''''''"
-  echo "''''''cOOOkkkkkKc:::codddkOOkxxdooxXOOO00000l''''''"
-  echo "''''''cOOOOOkkkkc::::::;;loooooooodOOOO00000l''''''"
-  echo "'''''',;clodxkkklc::::;;;looooooodxOOOkxdlc;,''''''"
-  echo "'''''''''''''',:clodddolclddxxxdolc:,''''''''''''''"
-  echo "''''''''''''''''''''',;:ccc:;''''''''''''''''''''''"
-  echo "'''''''''''''''''''''''''''''''''''''''''''''''''''"
-  
+  wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monkey_logo.sh -O monkey_logo.sh > /dev/null 2>&1
+  chmod 777 monkey_logo.sh
+  dos2unix monkey_logo.sh > /dev/null 2>&1
+  /bin/bash ./monkey_logo.sh
 elif [[ ${OPTION} == "9" ]] ; then
-  echo "'''''''''''''''''''''''''''''''''''''''''''''''''''"
-  echo "''''''''''''''''''''',,;:::;,,'''''''''''''''''''''"
-  echo "''''''''''''',,;;:cclllllllooddoolc:;,'''''''''''''"
-  echo "'''''',;;::cl[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0mllllloooddxxkkOOOOOkxolc:,''''''"
-  echo "'''''':oll[33mo[0m[33mo[0m[33mo[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0m[33ml[0mlllooddxxkkOOOOOOOOOOOkk[37m0[0ml''''''"
-  echo "'''''':o::::ccllooolooddxxkkOOOOOOkkxxd[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0ml''''''"
-  echo "'''''':o::::::::::::ccclldxxxddddoooodd[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0ml''''''"
-  echo "'',;:ldo::::oxolc:::::;:;loooooooddxkOx[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mklc;,''"
-  echo "',xxxxxo::::::;:ldxdoc:;;coooxkOOkx[37md[0m[37mo[0m[37mo[0moo[37mo[0m[37mo[0m[37mo[0m[37mO[0m[37m0[0mOOO[37mO[0m,'"
-  echo "',o:clxd:::::;.[37m [0m[37m'[0m[37m:[0m[37mo[0m':dc;;looxk[37mo[0m[37m:[0m[37mc[0m[37mo[0m[37mO[0m[37mo[0m[37m:[0m[37mo[0mo[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mO[37mx[0m[37md[0m[37mo[0m[37mk[0m,'"
-  echo "',o::xOd:::::. [37m'[0m[37mk[0m[37mo[0m[37md[0m[37m'[0m '::;looo[37mc[0m[37m'[0m[37m;[0m[37mx[0m[37mO[0m[37mO[0m[37mo[0m[37m'[0m[37mc[0mo[37mo[0m[37mo[0m[37mo[0m[37mo[0m[37mO[0mKk[37mo[0m[37mo[0m[37mk[0m''"
-  echo "',o:xkOdc::::,.  [37m.[0m[37m.[0m'.,;;;looo[37ml[0m[37mc[0m[37ml[0m[37mc[0m[37m:[0m[37m;[0m[37m;[0m[37m:[0m[37ml[0mo[37mo[0m[37mo[0m[37md[0m[37md[0m[37m0[0m[37mK[0mO[37mk[0m[37mo[0m[37mk[0m''"
-  echo "',o::okkxxxxdoollc;;:::;;loooooo[37mo[0mdxxxkOO0000[37m0[0m[37mx[0m[37mo[0m[37mo[0m[37mk[0m''"
-  echo "',xoolxkkkxxxxxxcllllccc:lddddxxxxdOOOO00000[37mO[0m[37mx[0m[37mx[0m[37mk[0m[37mO[0m''"
-  echo "'',;:okkkkkkxxxxcx0Okd:::ldodO0KKOdOOOO000000o:;,''"
-  echo "''''',lkkkkkkkkXc::clo:;;coodkxddodXOOO0000[37m0[0mo,'''''"
-  echo "''''''ckkkkkkkONxdddoc:;;coodxkkOO0W0OO00000l''''''"
-  echo "''''''cOOOkkkkkKc:::codddkOOkxxdooxXOOO00000l''''''"
-  echo "''''''cOOOOOkkkkc::::::;;loooooooodOOOO00000l''''''"
-  echo "'''''',;clodxkkklc::::;;;looooooodxOOOkxdlc;,''''''"
-  echo "'''''''''''''',:clodddolclddxxxdolc:,''''''''''''''"
-  echo "''''''''''''''''''''',;:ccc:;''''''''''''''''''''''"
-  echo "'''''''''''''''''''''''''''''''''''''''''''''''''''"
   exit 0
 fi
 /bin/bash ./monk.sh
