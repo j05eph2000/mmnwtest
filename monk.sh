@@ -100,4 +100,6 @@ elif [[ ${OPTION} == "8" ]] ; then
 elif [[ ${OPTION} == "9" ]] ; then
   exit 0
 fi
+###
+read -n 1 -s -r -p "****Press any key to go back to MONKEY MAIN MENU*****"
 /bin/bash ./monk.sh
