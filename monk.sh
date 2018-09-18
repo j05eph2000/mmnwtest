@@ -39,7 +39,8 @@ echo -e "4. RESTART NODE" #  -> MONK_RESTART.SH" # OK
 echo -e "5. STOP NODE" #  -> MONK_STOP.SH" # OK
 echo -e "6. INSTALL NEW NODES" #  -> MONK_SETUPV2.SH" # OK
 echo -e "7. CHECK NODE STATUS" #  -> MONK_CHECK_STATUS.SH" # OK
-echo -e "8. EXIT${NC}" # OK
+echo -e "8. ${RED}MONKEY LOGO${RED}" # OK
+echo -e "9. EXIT${NC}" # OK
 echo "---------------------------------------"
 echo "choose option number:"
 read OPTION
