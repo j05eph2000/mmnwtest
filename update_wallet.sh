@@ -11,8 +11,8 @@ for filename in ~/bin/monkey-cli*.sh; do
 done
 
 cd ~
-killall -9 monkeyd
-rm -rdf /usr/bin/monkey*
+sudo killall -9 monkeyd
+sudo rm -rdf /usr/bin/monkey*
 cd
 
 mkdir -p MONKEY_TMP
