@@ -19,7 +19,7 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
   MONKSTARTPOS_1=$[MONKSTARTPOS_1 + 1]
   MONKNAME=$(echo ${FILE:MONKSTARTPOS_1:${MONKLENGTH:0:2}-MONKSTARTPOS_1})  
   
-  MONKPID=`ps -ef | grep -i $MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
+  MONKPID=`ps -ef | grep -i _$MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
   echo "MONKPID="$MONKPID
 
   if [ -z "$MONKPID" ]; then
