@@ -22,7 +22,7 @@ chmod 775 monkey-2.3.0-x86_64-linux-gnu.tar.gz
 tar -xvzf monkey-2.3.0-x86_64-linux-gnu.tar.gz
 
 rm -f monkey-2.3.0-x86_64-linux-gnu.tar.gz
-mv  ./monkey-2.3.0/bin/monkey* /usr/bin
+sudo mv  ./monkey-2.3.0/bin/monkey* /usr/bin
 
 cd ~
 rm -rdf MONKEY_TMP
