@@ -1,13 +1,13 @@
 # MONKEY
 Shell script to install a [MONKEY Masternode](https://www.monkey.vision/) on a Linux server running Ubuntu 16.04
-*****USE THIS AT YOUR OWN RISK*****
+**USE THIS AT YOUR OWN RISK**
 ***
 ## Installation:
 Script monk.sh contains some useful tools to install, analize and repair your masternode from a command line menu.
 ```
 wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O monk.sh && chmod 755 monk.sh && ./monk.sh
 ```
-
+** Steps **
 1. Choose option 6. INSTALL NEW NODES (type 6, press ENTER).
 2. D"o you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
    * If it's your first time you host a MONKEY masternode on this Ubuntu Server, please type **y** 
@@ -32,6 +32,7 @@ wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O mo
 ## Desktop wallet setup
 
 After the MN is running and synced, you need to configure the desktop wallet accordingly. Here are the steps for QT Wallet
+** Steps **
 1. Open the MONKEY Desktop Wallet.
 2. Go to FILE -> Receiving Addresses
 3. Create new Address, name it **MN1**
