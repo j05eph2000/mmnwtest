@@ -9,7 +9,7 @@ wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O mo
 ```
 ***Steps:***
   1. Choose option 6. INSTALL NEW NODES (type 6, press ENTER).
-  2. D"o you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
+  2. Do you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
      * If it's your first time you host a MONKEY masternode on this Ubuntu Server, please type **y** 
      * If you installed a MONKEY masternode before on this server and only want to add a new one you can choose **n**.
   3. "How many nodes do you want to create on this server?, followed by [ENTER]:"
@@ -18,11 +18,11 @@ wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O mo
      * If **y** then masternode will automatically start if server reboots,
      * If **n** then you will have to start your wallet manually if server restart
   5. "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-     * Enter name of your masterndoe (Name must be unique!)
+     * Enter name of your masternode (Name must be unique!) "e.g. MN1
   6. Now the script will:
      * Install wallet using bootstrap
      * Create CLI script for executing commands in command line (for example getinfo, masternode status so on…)
-     * Generate masternode priv key
+     * Generate masternode privatekey
      * Set port and RPC date (user, password, port,…)
      * Restart wallet   
   7. **At the end when you finish to setting your masternode (or more of them) you will see data that you have to put in your HOT WALLET masternode.conf**
@@ -51,6 +51,42 @@ After the MN is running and synced, you need to configure the desktop wallet acc
 ```
 startmasternode alias false MN1
 ```
+The following should appear:
+```
+“overall” : “Successfully started 1 masternodes, failed to start 0, total 1”,
+“detail” : [
+{
+“alias” : “MN1”,
+“result” : “successful”,
+“error” : “”
+}
+```
+*Note that Masternode will become **ENABLED** in Masternode tab but Active timer will remain 00:00 because its correct status is ACTIVE.*
+
+### Check masternode status in hot wallet debug console:
+Command:
+```
+masternode list-conf
+```
+Output:
+```
+ {
+    "alias": "MN1",
+    "address": "<IP>:<PORT>",
+    "privateKey": "<MASTERNODE PRIVAREKEY>",
+    "txHash": "<TXHAS>",
+    "outputIndex": "0",
+    "status": "ACTIVE"
+  }
+```
+*In few hours Masternode will change to status **ENABLED** and Active timer will start counting*
+
+### Check masternode status on server side
+Command:
+```
+./bin/monkey-cli_mn1.sh startmasternode local false
+```
+– A message “masternode successfully started” should appear
 ***
 
 ## MONK.sh script:
