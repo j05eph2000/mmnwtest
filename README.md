@@ -7,32 +7,32 @@ Script monk.sh contains some useful tools to install, analize and repair your ma
 ```
 wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monk.sh -O monk.sh && chmod 755 monk.sh && ./monk.sh
 ```
-***Steps***
-1. Choose option 6. INSTALL NEW NODES (type 6, press ENTER).
-2. D"o you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
-   * If it's your first time you host a MONKEY masternode on this Ubuntu Server, please type **y** 
-   * If you installed a MONKEY masternode before on this server and only want to add a new one you can choose **n**.
-3. "How many nodes do you want to create on this server?, followed by [ENTER]:"
-   * In our Tutorial we will choose 1 but you can put up to 8 on a 5$ Server and up to 15 on a 10$ Server of VULTR.   
-4. "Do you want wallets to restart on reboot? [y/n]"
-   * If **y** then masternode will automatically start if server reboots,
-   * If **n** then you will have to start your wallet manually if server restart
-5. "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-   * Enter name of your masterndoe (Name must be unique!)
-6. Now the script will:
-   * Install wallet using bootstrap
-   * Create CLI script for executing commands in command line (for example getinfo, masternode status so on…)
-   * Generate masternode priv key
-   * Set port and RPC date (user, password, port,…)
-   * Restart wallet   
-7. **At the end when you finish to setting your masternode (or more of them) you will see data that you have to put in your HOT WALLET masternode.conf**
-   * copy / paste this line / lines in your notepad on your local machine
+***Steps:***
+	1. Choose option 6. INSTALL NEW NODES (type 6, press ENTER).
+	2. D"o you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
+	   * If it's your first time you host a MONKEY masternode on this Ubuntu Server, please type **y** 
+	   * If you installed a MONKEY masternode before on this server and only want to add a new one you can choose **n**.
+	3. "How many nodes do you want to create on this server?, followed by [ENTER]:"
+	   * In our Tutorial we will choose 1 but you can put up to 8 on a 5$ Server and up to 15 on a 10$ Server of VULTR.   
+	4. "Do you want wallets to restart on reboot? [y/n]"
+	   * If **y** then masternode will automatically start if server reboots,
+	   * If **n** then you will have to start your wallet manually if server restart
+	5. "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
+	   * Enter name of your masterndoe (Name must be unique!)
+	6. Now the script will:
+	   * Install wallet using bootstrap
+	   * Create CLI script for executing commands in command line (for example getinfo, masternode status so on…)
+	   * Generate masternode priv key
+	   * Set port and RPC date (user, password, port,…)
+	   * Restart wallet   
+	7. **At the end when you finish to setting your masternode (or more of them) you will see data that you have to put in your HOT WALLET masternode.conf**
+	   * copy / paste this line / lines in your notepad on your local machine
 ***
 
 ## Desktop wallet setup
 
 After the MN is running and synced, you need to configure the desktop wallet accordingly. Here are the steps for QT Wallet
-***Steps***
+***Steps:***
 1. Open the MONKEY Desktop Wallet.
 2. Go to FILE -> Receiving Addresses
 3. Create new Address, name it **MN1**
