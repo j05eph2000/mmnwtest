@@ -19,7 +19,7 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
   MONKSTARTPOS_1=$[MONKSTARTPOS_1 + 1]
   MONKNAME=$(echo ${FILE:MONKSTARTPOS_1:${MONKLENGTH:0:2}-MONKSTARTPOS_1})  
   
-  MONKPID=`ps -ef | grep -i _$MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
+  MONKPID=`ps -ef | grep -i $MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
   echo "MONKPID="$MONKPID
 
   if [ -z "$MONKPID" ]; then
@@ -35,10 +35,21 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 	  BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr , " ")
 	  BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr '"' " ")
 	  BLOCKHASHCOINEXPLORERMONK="$(echo -e "${BLOCKHASHCOINEXPLORERMONK}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+	  
+	  WALLETVERSION=$(~/bin/monkey-cli_$MONKNAME.sh getinfo | grep -i \"version\")
+	  WALLETVERSION=$(echo $WALLETVERSION | tr , " ")
+	  WALLETVERSION=$(echo $WALLETVERSION | tr '"' " ")
+	  WALLETVERSION=$(echo $WALLETVERSION | tr 'version : ' " ")
+	  WALLETVERSION=$(echo $WALLETVERSION | tr -d ' ' )
+	  
+	  if ! [ "$WALLETVERSION" == "2030003" ]; then
+	     echo "!!!Your wallet $MONKNAME is OUTDATED!!!"
+	  fi
 
 	  echo "LASTBLOCK="$LASTBLOCK
 	  echo "GETBLOCKHASH="$GETBLOCKHASH
 	  echo "BLOCKHASHCOINEXPLORERMONK="$BLOCKHASHCOINEXPLORERMONK
+	  echo "WALLETVERSION="$WALLETVERSION
 	  
 	  if [ "$GETBLOCKHASH" == "$BLOCKHASHCOINEXPLORERMONK" ]; then
 		echo "Wallet $FILE is SYNCED!"
