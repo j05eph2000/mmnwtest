@@ -23,11 +23,11 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo && echo && echo
 
 if [[ $(lsb_release -d) != *16.04* ]]; then
-  echo -e "The operating system is not Ubuntu 16.04. You must be running on ubuntu 16.04."
+  echo -e "${RED}The operating system is not Ubuntu 16.04. You must be running on ubuntu 16.04.${NC}"
   exit 1
 fi
 
-echo "Do you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
+echo -e "${YELLOW}Do you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]${NC}"
 read DOSETUP
 
 if [[ ${DOSETUP,,} =~ "y" ]] ; then
@@ -96,9 +96,9 @@ REBOOTRESTART=""
 re='^[0-9]+$'
 while ! [[ $MNCOUNT =~ $re ]] ; do
    echo ""
-   echo "${YELLOW}How many nodes do you want to create on this server?, followed by [ENTER]:${NC}"
+   echo -e "${YELLOW}How many nodes do you want to create on this server?, followed by [ENTER]:${NC}"
    read MNCOUNT
-   echo "${YELLOW}Do you want wallets to restart on reboot? [y/n]${NC}"
+   echo -e "${YELLOW}Do you want wallets to restart on reboot? [y/n]${NC}"
    read REBOOTRESTART
 done
 
@@ -108,20 +108,20 @@ for i in `seq 1 1 $MNCOUNT`; do
     echo "************************************************************"
     echo ""
     #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-	echo "${YELLOW}Enter alphanumeric alias for new node. Name must be unique!${NC}"
+	echo -e "${YELLOW}Enter alphanumeric alias for new node. Name must be unique!${NC}"
     read ALIAS 
 
     ALIAS=${ALIAS,,}  
   
     if [[ "$ALIAS" =~ [^0-9A-Za-z]+ ]] ; then
-      echo "${RED}$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters.${NC}"
+      echo -e "${RED}$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters.${NC}"
 	elif [ -z "$ALIAS" ]; then
-	  echo "$ALIAS in empty!"
+	  echo -e "${RED}$ALIAS in empty!${NC}"
     else
 	  CONF_DIR=~/.${NAME}_$ALIAS
 	  
       if [ -d "$CONF_DIR" ]; then
-        echo "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
+        echo -e "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
       else
 		# OK !!!
         break
@@ -290,14 +290,14 @@ for i in `seq 1 1 $MNCOUNT`; do
   COUNTER=$[COUNTER + 1]
 done
 echo ""
-echo "${YELLOW}****************************************************************"
-echo "**Copy/Paste lines below in Hot wallet masternode.conf file**"
-echo "**and replace txhash and outputidx with data from masternode outputs command**"
-echo "**in hot wallet console**"
-echo "**Tutorial: http://www.monkey.vision/ubuntu-masternodes/ **"
-echo "****************************************************************${NC}"
-echo "${RED}"
+echo -e "${YELLOW}****************************************************************"
+echo -e "**Copy/Paste lines below in Hot wallet masternode.conf file**"
+echo -e "**and replace txhash and outputidx with data from masternode outputs command**"
+echo -e "**in hot wallet console**"
+echo -e "**Tutorial: http://www.monkey.vision/ubuntu-masternodes/ **"
+echo -e "****************************************************************${NC}"
+echo -e "${RED}"
 cat ~/bin/masternode_config.txt
-echo "${NC}"
+echo -e "${NC}"
 echo "****************************************************************"
 echo ""
