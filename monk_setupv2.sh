@@ -107,7 +107,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   
     if [[ "$ALIAS" =~ [^0-9A-Za-z]+ ]] ; then
       echo "$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters."
-	elif [ -z "$PORT" ]; then
+	elif [ -z "$ALIAS" ]; then
 	  echo "ALIAS in empty!"
     else
 	  CONF_DIR=~/.${NAME}_$ALIAS
