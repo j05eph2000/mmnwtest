@@ -96,9 +96,9 @@ REBOOTRESTART=""
 re='^[0-9]+$'
 while ! [[ $MNCOUNT =~ $re ]] ; do
    echo ""
-   echo "How many nodes do you want to create on this server?, followed by [ENTER]:"
+   echo "${YELLOW}How many nodes do you want to create on this server?, followed by [ENTER]:${NC}"
    read MNCOUNT
-   echo "Do you want wallets to restart on reboot? [y/n]"
+   echo "${YELLOW}Do you want wallets to restart on reboot? [y/n]${NC}"
    read REBOOTRESTART
 done
 
@@ -108,20 +108,20 @@ for i in `seq 1 1 $MNCOUNT`; do
     echo "************************************************************"
     echo ""
     #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-	echo "Enter alphanumeric alias for new node. Name must be unique!"
+	echo "${YELLOW}Enter alphanumeric alias for new node. Name must be unique!${NC}"
     read ALIAS 
 
     ALIAS=${ALIAS,,}  
   
     if [[ "$ALIAS" =~ [^0-9A-Za-z]+ ]] ; then
-      echo "$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters."
+      echo "${RED}$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters.${NC}"
 	elif [ -z "$ALIAS" ]; then
 	  echo "$ALIAS in empty!"
     else
 	  CONF_DIR=~/.${NAME}_$ALIAS
 	  
       if [ -d "$CONF_DIR" ]; then
-        echo "$ALIAS is already used. $CONF_DIR already exists!"
+        echo "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
       else
 		# OK !!!
         break
