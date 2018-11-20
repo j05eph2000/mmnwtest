@@ -1,5 +1,13 @@
 #/bin/bash
 
+RED='\033[1;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+YELLOW='\033[1;33m'
+BROWN='\033[0;34m'
+NC='\033[0m' # No Color
+
 cd ~
 echo "******************************************************************************"
 echo "* Ubuntu 16.04 is the recommended operating system for this install.         *"
@@ -282,12 +290,14 @@ for i in `seq 1 1 $MNCOUNT`; do
   COUNTER=$[COUNTER + 1]
 done
 echo ""
-echo "****************************************************************"
+echo "${YELLOW}****************************************************************"
 echo "**Copy/Paste lines below in Hot wallet masternode.conf file**"
 echo "**and replace txhash and outputidx with data from masternode outputs command**"
 echo "**in hot wallet console**"
 echo "**Tutorial: http://www.monkey.vision/ubuntu-masternodes/ **"
-echo "****************************************************************"
+echo "****************************************************************${NC}"
+echo "${RED}"
 cat ~/bin/masternode_config.txt
+echo "${NC}"
 echo "****************************************************************"
 echo ""
