@@ -2,6 +2,8 @@
 
 PARAM1=$*
 
+sudo apt-get install -y jq > /dev/null 2>&1
+
 if [ -z "$PARAM1" ]; then
   PARAM1="*"  	  
 else
@@ -44,28 +46,30 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 	echo "LASTBLOCK="$LASTBLOCK
 	echo "GETBLOCKHASH="$GETBLOCKHASH
 	
-	LASTBLOCKCOINEXPLORERMONK=$(curl -s4 https://www.coinexplorer.net/api/MONK/block/latest)
+	#LASTBLOCKCOINEXPLORERMONK=$(curl -s4 https://www.coinexplorer.net/api/MONK/block/latest)
 	# echo $LASTBLOCKCOINEXPLORERMONK
-	BLOCKHASHCOINEXPLORERMONK=', ' read -r -a array <<< $LASTBLOCKCOINEXPLORERMONK
-	BLOCKCOUNTCOINEXPLORERMONK=${array[8]}
+	#BLOCKHASHCOINEXPLORERMONK=', ' read -r -a array <<< $LASTBLOCKCOINEXPLORERMONK
+	#BLOCKCOUNTCOINEXPLORERMONK=${array[8]}
 	# echo $BLOCKCOUNTCOINEXPLORERMONK	
-	BLOCKCOUNTCOINEXPLORERMONK=$(echo $BLOCKCOUNTCOINEXPLORERMONK | tr , " ")
+	#BLOCKCOUNTCOINEXPLORERMONK=$(echo $BLOCKCOUNTCOINEXPLORERMONK | tr , " ")
 	# echo $BLOCKCOUNTCOINEXPLORERMONK
-	BLOCKCOUNTCOINEXPLORERMONK=$(echo $BLOCKCOUNTCOINEXPLORERMONK | tr '"' " ")
+	#BLOCKCOUNTCOINEXPLORERMONK=$(echo $BLOCKCOUNTCOINEXPLORERMONK | tr '"' " ")
 	# echo $BLOCKCOUNTCOINEXPLORERMONK
 	# echo -e "BLOCKCOUNTCOINEXPLORERMONK='${BLOCKCOUNTCOINEXPLORERMONK}'"
-	BLOCKCOUNTCOINEXPLORERMONK="$(echo -e "${BLOCKCOUNTCOINEXPLORERMONK}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+	#BLOCKCOUNTCOINEXPLORERMONK="$(echo -e "${BLOCKCOUNTCOINEXPLORERMONK}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 	# echo -e "BLOCKCOUNTCOINEXPLORERMONK='${BLOCKCOUNTCOINEXPLORERMONK}'"	
 	
-	BLOCKHASHCOINEXPLORERMONK=${array[6]}
+	#BLOCKHASHCOINEXPLORERMONK=${array[6]}
 	# echo "BLOCKHASHCOINEXPLORERMONK="$BLOCKHASHCOINEXPLORERMONK
-	BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr , " ")
+	#BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr , " ")
 	# echo $BLOCKHASHCOINEXPLORERMONK
-	BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr '"' " ")
+	#BLOCKHASHCOINEXPLORERMONK=$(echo $BLOCKHASHCOINEXPLORERMONK | tr '"' " ")
 	# echo $BLOCKHASHCOINEXPLORERMONK
 	# echo -e "BLOCKHASHCOINEXPLORERMONK='${BLOCKHASHCOINEXPLORERMONK}'"
-	BLOCKHASHCOINEXPLORERMONK="$(echo -e "${BLOCKHASHCOINEXPLORERMONK}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
-	# echo -e "BLOCKHASHCOINEXPLORERMONK='${BLOCKHASHCOINEXPLORERMONK}'"		
+	#BLOCKHASHCOINEXPLORERMONK="$(echo -e "${BLOCKHASHCOINEXPLORERMONK}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+	# echo -e "BLOCKHASHCOINEXPLORERMONK='${BLOCKHASHCOINEXPLORERMONK}'"
+
+    BLOCKHASHCOINEXPLORERMONK=$(curl -s4 https://www.coinexplorer.net/api/MONK/block/latest | jq -r ".result.hash")	
 
 	echo "LASTBLOCK="$LASTBLOCK
 	echo "GETBLOCKHASH="$GETBLOCKHASH
@@ -105,7 +109,8 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 		  cd $MONKCONFPATH
 		  echo CURRENT CONF FOLDER: $PWD
 		  echo "Copy BLOCKCHAIN without conf files"
-		  wget http://blockchain.monkey.vision/ -O bootstrap.zip
+		  # wget http://blockchain.monkey.vision/ -O bootstrap.zip
+		  wget http://107.191.46.178/monk/bootstrap/bootstrap.zip -O bootstrap.zip
 		  # rm -R peers.dat 
 		  rm -R ./database
 		  rm -R ./blocks	

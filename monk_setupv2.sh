@@ -14,6 +14,11 @@ echo "!                                                 !"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo && echo && echo
 
+if [[ $(lsb_release -d) != *16.04* ]]; then
+  echo -e "The operating system is not Ubuntu 16.04. You must be running on ubuntu 16.04."
+  exit 1
+fi
+
 echo "Do you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]"
 read DOSETUP
 
@@ -33,6 +38,7 @@ if [[ ${DOSETUP,,} =~ "y" ]] ; then
   sudo apt-get update
   sudo apt-get install -y libdb4.8-dev libdb4.8++-dev
   sudo apt-get install -y dos2unix
+  sudo apt-get install -y jq
 
   cd /var
   sudo touch swap.img
@@ -88,13 +94,32 @@ while ! [[ $MNCOUNT =~ $re ]] ; do
    read REBOOTRESTART
 done
 
-for i in `seq 1 1 $MNCOUNT`; do
-  echo "************************************************************"
-  echo ""
-  echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-  read ALIAS 
+for i in `seq 1 1 $MNCOUNT`; do 
+  for (( ; ; ))
+  do  
+    echo "************************************************************"
+    echo ""
+    #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
+	echo "Enter alphanumeric alias for new node. Name must be unique!"
+    read ALIAS 
 
-  ALIAS=${ALIAS,,}  
+    ALIAS=${ALIAS,,}  
+  
+    if [[ "$ALIAS" =~ [^0-9A-Za-z]+ ]] ; then
+      echo "$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters."
+	elif [ -z "$PORT" ]; then
+	  echo "ALIAS in empty!"
+    else
+	  CONF_DIR=~/.${NAME}_$ALIAS
+	  
+      if [ -d "$CONF_DIR" ]; then
+        echo "$ALIAS is already used. $CONF_DIR already exists!"
+      else
+		# OK !!!
+        break
+      fi	
+    fi  
+  done
   
   PORT=""
   RPCPORT=""
@@ -133,7 +158,6 @@ for i in `seq 1 1 $MNCOUNT`; do
   # echo "Enter masternode private key for node $ALIAS"
   # read PRIVKEY
 
-  CONF_DIR=~/.${NAME}_$ALIAS
   CONF_FILE=monkey.conf
   
   if [[ "$COUNTER" -lt 2 ]]; then
