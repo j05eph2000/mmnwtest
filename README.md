@@ -103,7 +103,7 @@ Options:
 5. STOP NODE – stop wallets
 6. INSTALL NEW NODES – will install a new cold wallet or more of them
 7. CHECK NODE STATUS – masternode status
-8. RESINC SPECIFIC NODE - resync node (useful if node is stopped)
+8. RESYNC SPECIFIC NODE - resync node (useful if node is stopped)
 9. MONKEY LOGO
 
 ## Commands:
