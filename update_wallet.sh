@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 
 echo "MONK - Masternode updater"
 echo ""
