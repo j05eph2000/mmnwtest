@@ -124,7 +124,8 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 	  echo CURRENT CONF FOLDER: $PWD
 	  echo "Copy BLOCKCHAIN without conf files"
 	  # wget http://blockchain.monkey.vision/ -O bootstrap.zip
-	  wget http://107.191.46.178/monk/bootstrap/bootstrap.zip -O bootstrap.zip
+	  # wget http://107.191.46.178/monk/bootstrap/bootstrap.zip -O bootstrap.zip
+	  wget http://194.135.84.214/monk/bootstrap/bootstrap.zip -O bootstrap.zip
 	  # rm -R peers.dat 
 	  rm -R ./database
 	  rm -R ./blocks	
