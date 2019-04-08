@@ -267,7 +267,7 @@ for i in `seq 1 1 $MNCOUNT`; do
     echo "Copy BLOCKCHAIN without conf files"
     #wget http://blockchain.monkey.vision/ -O bootstrap.zip
     #wget http://107.191.46.178/monk/bootstrap/bootstrap.zip -O bootstrap.zip
-    wget http://194.135.84.214/monk/bootstrap/bootstrap.zip -O bootstrap.zip
+    wget http://167.86.97.235/monk/bootstrap/bootstrap.zip -O bootstrap.zip
     # rm -R peers.dat 
 	rm -R ./database
 	rm -R ./blocks	
