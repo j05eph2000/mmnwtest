@@ -113,7 +113,7 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 		fi
 	fi
 	
-	sleep 3 # wait 3 seconds 
+	sleep 2 # wait 2 seconds 
 	MONKPID=`ps -ef | grep -i _$MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
 	echo "MONKPID="$MONKPID
 	
@@ -134,7 +134,7 @@ for FILE in ~/bin/monkeyd_$PARAM1.sh; do
 	  rm -R ./chainstate		  
 	  unzip  bootstrap.zip
 	  $FILE
-	  sleep 5 # wait 5 seconds 
+	  sleep 3 # wait 3 seconds 
 	  
 	  MONKPID=`ps -ef | grep -i _$MONKNAME | grep -i monkeyd | grep -v grep | awk '{print $2}'`
 	  echo "MONKPID="$MONKPID
