@@ -138,7 +138,6 @@ MNCOUNT=""
 REBOOTRESTART=""
 re='^[0-9]+$'
 while ! [[ $MNCOUNT =~ $re ]] ; do
-   echo ""
    echo -e "${YELLOW}How many nodes do you want to create on this server?, followed by [ENTER]:${NC}"
    read MNCOUNT
    echo -e "${YELLOW}Do you want wallets to restart on reboot? [y/n]${NC}"
