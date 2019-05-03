@@ -150,8 +150,12 @@ do
    #echo "************************************************************"
    #echo ""
    #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
-   echo -e "${YELLOW}Enter alphanumeric alias for new nodes. Name must be unique!${NC}"
+   echo -e "${YELLOW}Enter alphanumeric alias for new nodes. Name must be unique![default: mn]${NC}"
    read ALIAS1
+
+   if [ -z "$ALIAS1" ]; then
+      ALIAS1="mn"
+   fi   
 
    ALIAS1=${ALIAS1,,}  
 
