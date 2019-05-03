@@ -147,22 +147,22 @@ done
 
 for (( ; ; ))
 do  
-   echo "************************************************************"
+   #echo "************************************************************"
    echo ""
    #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
    echo -e "${YELLOW}Enter alphanumeric alias for new nodes. Name must be unique!${NC}"
-   read ALIAS 
+   read ALIAS1
 
-   ALIAS=${ALIAS,,}  
+   ALIAS1=${ALIAS1,,}  
 
-   if [[ "$ALIAS" =~ [^0-9A-Za-z]+ ]] ; then
-      echo -e "${RED}$ALIAS has characters which are not alphanumeric. Please use only alphanumeric characters.${NC}"
-   elif [ -z "$ALIAS" ]; then
-      echo -e "${RED}$ALIAS in empty!${NC}"
+   if [[ "$ALIAS1" =~ [^0-9A-Za-z]+ ]] ; then
+      echo -e "${RED}$ALIAS1 has characters which are not alphanumeric. Please use only alphanumeric characters.${NC}"
+   elif [ -z "$ALIAS1" ]; then
+      echo -e "${RED}$ALIAS1 in empty!${NC}"
    else
-      CONF_DIR=~/.${NAME}_$ALIAS
+      CONF_DIR=~/.${NAME}_$ALIAS1
       if [ -d "$CONF_DIR" ]; then
-         echo -e "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
+         echo -e "${RED}$ALIAS1 is already used. $CONF_DIR already exists!${NC}"
       else
          # OK !!!
          break
@@ -186,7 +186,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
       echo "************************************************************"
       echo ""
       EXIT='NO'
-      ALIAS="$ALIAS$STARTNUMBER"
+      ALIAS="$ALIAS1$STARTNUMBER"
       ALIAS=${ALIAS,,}  
       echo $ALIAS
       echo "" 
@@ -341,10 +341,10 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    if [ -z "$MONKPID" ]; then
       cd $CONF_DIR
       echo "Copy BLOCKCHAIN without conf files"
-	   rm -R ./database
-	   rm -R ./blocks	
-	   rm -R ./sporks
-	   rm -R ./chainstate	
+	   rm -R ./database &>/dev/null &
+	   rm -R ./blocks	&>/dev/null &
+	   rm -R ./sporks &>/dev/null &
+	   rm -R ./chainstate &>/dev/null &
       cp $CONF_DIR_TMP/bootstrap.zip .
       unzip  bootstrap.zip
       rm ./bootstrap.zip
