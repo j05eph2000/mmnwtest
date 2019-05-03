@@ -148,7 +148,7 @@ done
 for (( ; ; ))
 do  
    #echo "************************************************************"
-   echo ""
+   #echo ""
    #echo "Enter alias for new node. Name must be unique! (Don't use same names as for previous nodes on old chain if you didn't delete old chain folders!)"
    echo -e "${YELLOW}Enter alphanumeric alias for new nodes. Name must be unique!${NC}"
    read ALIAS1
@@ -281,9 +281,9 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    mv ${NAME}.conf_TEMP $CONF_DIR/monkey.conf
  
    if [ -z "$PRIVKEY" ]; then
-	   MONKPID=`ps -ef | grep -i $ALIASONE | grep -v grep | awk '{print $2}'`
+	   PID=`ps -ef | grep -i $ALIASONE | grep -v grep | awk '{print $2}'`
 	
-	   if [ -z "$MONKPID" ]; then
+	   if [ -z "$PID" ]; then
          # start wallet
          sh ~/bin/${NAME}d_$ALIASONE.sh  
 	      sleep 1
@@ -306,8 +306,8 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	
 	   for (( ; ; ))
 	   do
-		   MONKPID=`ps -ef | grep -i $ALIAS | grep -v grep | awk '{print $2}'`
-		   if [ -z "$MONKPID" ]; then
+		   PID=`ps -ef | grep -i $ALIAS | grep -v grep | awk '{print $2}'`
+		   if [ -z "$PID" ]; then
 		      echo ""
 		   else
 		      #STOP 
@@ -315,10 +315,10 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 		   fi
 		   echo "Please wait ..."
 		   sleep 2 # wait 2 seconds 
-		   MONKPID=`ps -ef | grep -i $ALIAS | grep -v grep | awk '{print $2}'`
-		   echo "MONKPID="$MONKPID	
+		   PID=`ps -ef | grep -i $ALIAS | grep -v grep | awk '{print $2}'`
+		   echo "PID="$PID	
 		
-		   if [ -z "$MONKPID" ]; then
+		   if [ -z "$PID" ]; then
 		      sleep 1 # wait 1 second
 		      echo "masternode=1" >> $CONF_DIR/monkey.conf
 		      echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/monkey.conf
@@ -328,17 +328,17 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    fi
   
    sleep 2
-   MONKPID=`ps -ef | grep -i $MONKNAME | grep -v grep | awk '{print $2}'`
-   echo "MONKPID="$MONKPID
+   PID=`ps -ef | grep -i $ALIAS | grep -v grep | awk '{print $2}'`
+   echo "PID="$PID
   
-   if [ -z "$MONKPID" ]; then
+   if [ -z "$PID" ]; then
       echo ""
    else
       ~/bin/monkey-cli_$ALIAS.sh stop
 	   sleep 2 # wait 2 seconds 
    fi	
   
-   if [ -z "$MONKPID" ]; then
+   if [ -z "$PID" ]; then
       cd $CONF_DIR
       echo "Copy BLOCKCHAIN without conf files"
 	   rm -R ./database &>/dev/null &
