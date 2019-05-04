@@ -67,6 +67,7 @@ function get_ip() {
 
 get_ip
 IP=NODEIP
+IPONE=$(curl -s4 icanhazip.com)
 
 echo -e "${YELLOW}Do you want to install all needed dependencies (no if you did it before, yes if you are installing your first node)? [y/n]${NC}"
 read DOSETUP
@@ -356,7 +357,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    fi		  
 
   
-   MNCONFIG=$(echo $ALIAS $IP:$PORT $PRIVKEY "txhash" "outputidx")
+   MNCONFIG=$(echo $ALIAS $IPONE:$PORT $PRIVKEY "txhash" "outputidx")
    echo $MNCONFIG >> ~/bin/masternode_config.txt
   
    if [[ ${REBOOTRESTART,,} =~ "y" ]] ; then
