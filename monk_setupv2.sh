@@ -204,10 +204,14 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
          EXIT='YES'
       else
 	      CONF_DIR=~/.${NAME}_$ALIAS
+         CONF_DIR0=~/.${NAME}_0${ALIAS}
 	  
          if [ -d "$CONF_DIR" ]; then
             echo -e "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
             STARTNUMBER=$[STARTNUMBER + 1]
+         elif  [ -d "$CONF_DIR0" ]; then
+            echo -e "${RED}$ALIAS is already used. $CONF_DIR0 already exists!${NC}"
+            STARTNUMBER=$[STARTNUMBER + 1]            
          else
             # OK !!!
             break
