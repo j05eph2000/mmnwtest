@@ -191,6 +191,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
       echo ""
       EXIT='NO'
       ALIAS="$ALIAS1$STARTNUMBER"
+      ALIAS0="${ALIAS1}0${STARTNUMBER}"
       ALIAS=${ALIAS,,}  
       echo $ALIAS
       echo "" 
@@ -203,8 +204,8 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	      echo -e "${RED}$ALIAS in empty!${NC}"
          EXIT='YES'
       else
-	      CONF_DIR=~/.${NAME}_$ALIAS
-         CONF_DIR0=~/.${NAME}_0${ALIAS}
+	      CONF_DIR=~/.${NAME}_${ALIAS}
+         CONF_DIR0=~/.${NAME}_${ALIAS0}
 	  
          if [ -d "$CONF_DIR" ]; then
             echo -e "${RED}$ALIAS is already used. $CONF_DIR already exists!${NC}"
