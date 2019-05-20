@@ -104,7 +104,9 @@ Options:
 6. INSTALL NEW NODES – will install a new cold wallet or more of them
 7. CHECK NODE STATUS – masternode status
 8. RESYNC SPECIFIC NODE - resync node (useful if node is stopped)
-9. MONKEY LOGO
+9. CALCULATE FREE MEMORY AND CPU FOR NEW NODES - tells you how many nodes can be installed on server
+10. MONKEY LOGO
+11. EXIT
 
 ## Commands:
 Start: 	
