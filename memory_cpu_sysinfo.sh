@@ -35,7 +35,7 @@ for PID in `ps -ef | grep -i ${COIN} | grep daemon | grep conf | grep -v grep | 
    COUNTER=$[COUNTER + 1]
 done
 
-echo -e "${GREEN}Number of nodes ${COUNTER} ${NC}"
+echo -e "${GREEN}Currently running nodes: ${COUNTER} ${NC}"
 
 if [ $COUNTER == 0 ]
 then
