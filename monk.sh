@@ -103,7 +103,6 @@ elif [[ ${OPTION} == "9" ]] ; then
   wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/memory_cpu_sysinfo.sh -O memory_cpu_sysinfo.sh > /dev/null 2>&1
   chmod 777 memory_cpu_sysinfo.sh
   dos2unix memory_cpu_sysinfo.sh > /dev/null 2>&1
-  sudo apt-get install -y bc
   /bin/bash ./memory_cpu_sysinfo.sh
 elif [[ ${OPTION} == "10" ]] ; then  
   wget https://raw.githubusercontent.com/MONKEYPROJECT/Guides/master/monkey_logo.sh -O monkey_logo.sh > /dev/null 2>&1

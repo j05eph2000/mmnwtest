@@ -8,6 +8,9 @@ YELLOW='\033[1;33m'
 BROWN='\033[0;34m'
 NC='\033[0m' # No Color
 
+# dependencies
+sudo apt-get install -y bc
+
 TOTALMEM=0
 TOTALCPU=0
 COUNTER=0
