@@ -20,7 +20,7 @@ URL="https://github.com/MONKEYPROJECT/MonkeyV2/releases/download/v${WALLETVERSIO
 CONF_FILE="${NAME}.conf"
 CONF_DIR_TMP=~/"${NAME}_tmp"
 BOOTSTRAPURL="http://167.86.97.235/${NAMEALIAS}/bootstrap/bootstrap.zip"
-PORT=37234
+PORT=37233
 RPCPORT=9234
 
 cd ~
@@ -228,7 +228,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    PORT1=""
    for (( ; ; ))
    do
-      PORT1=$(netstat -peanut | grep -i $PORT)
+      PORT1=$(netstat -peanut | grep -i listen | grep -i $PORT)
 
       if [ -z "$PORT1" ]; then
          break
@@ -241,7 +241,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    RPCPORT1=""
    for (( ; ; ))
    do
-      RPCPORT1=$(netstat -peanut | grep -i $RPCPORT)
+      RPCPORT1=$(netstat -peanut | grep -i listen | grep -i $RPCPORT)
 
       if [ -z "$RPCPORT1" ]; then
          break
