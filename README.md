@@ -5,7 +5,7 @@ Shell script to install a [MONKEY Masternode](https://www.monkey.vision/) on a L
 ## Installation:
 Script monk.sh contains some useful tools to install, analize and repair your masternode from a command line menu.
 ```
-https://raw.githubusercontent.com/j05eph2000/mmnwtest/master/monk_setupv2.sh -O monk_setupv2.sh && chmod 755 monk_setupv2.sh && ./monk_setupv2.sh
+wget https://raw.githubusercontent.com/j05eph2000/mmnwtest/master/monk_setupv2.sh -O monk_setupv2.sh && chmod 755 monk_setupv2.sh && ./monk_setupv2.sh
 ```
 ***Steps:***
   1. Choose option 6. INSTALL NEW NODES (type 6, press ENTER).
