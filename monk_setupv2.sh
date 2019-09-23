@@ -21,7 +21,7 @@ CONF_FILE="${NAME}.conf"
 CONF_DIR_TMP=~/"${NAME}_tmp"
 BOOTSTRAPURL="https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip"
 PORT=55002
-RPCPORT=550020
+RPCPORT=$PORT*10
 
 cd ~
 echo "******************************************************************************"
