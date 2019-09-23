@@ -9,19 +9,19 @@ BROWN='\033[0;34m'
 NC='\033[0m' # No Color
 
 # CONFIGURATION
-NAME="monkey"
-NAMEALIAS="monk"
-WALLETVERSION="2.3.0"
+NAME="wagerr"
+NAMEALIAS="wgr"
+WALLETVERSION="3.0.1"
 
 # ADDITINAL CONFIGURATION
 WALLETDLFOLDER="${NAME}-${WALLETVERSION}"
 WALLETDL="${WALLETDLFOLDER}-x86_64-linux-gnu.tar.gz"
-URL="https://github.com/MONKEYPROJECT/MonkeyV2/releases/download/v${WALLETVERSION}/${WALLETDL}"
+URL="https://github.com/wagerr/wagerr/releases/download/v${WALLETVERSION}/${WALLETDL}"
 CONF_FILE="${NAME}.conf"
 CONF_DIR_TMP=~/"${NAME}_tmp"
-BOOTSTRAPURL="http://167.86.97.235/${NAMEALIAS}/bootstrap/bootstrap.zip"
-PORT=37233
-RPCPORT=9234
+BOOTSTRAPURL="https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip"
+PORT=55002
+RPCPORT=550020
 
 cd ~
 echo "******************************************************************************"
@@ -93,7 +93,7 @@ if [[ ${DOSETUP,,} =~ "y" ]] ; then
    cd /var
    sudo touch swap.img
    sudo chmod 600 swap.img
-   sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
+   sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=6000
    sudo mkswap /var/swap.img
    sudo swapon /var/swap.img
    sudo free
@@ -270,6 +270,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> ${NAME}.conf_TEMP
    echo "rpcallowip=127.0.0.1" >> ${NAME}.conf_TEMP
    echo "rpcport=$RPCPORT" >> ${NAME}.conf_TEMP
+   echo "port=$PORT" >> ${NAME}.conf_TEMP
    echo "listen=1" >> ${NAME}.conf_TEMP
    echo "server=1" >> ${NAME}.conf_TEMP
    echo "daemon=1" >> ${NAME}.conf_TEMP
@@ -278,6 +279,8 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 
    echo "" >> ${NAME}.conf_TEMP
    echo "port=$PORT" >> ${NAME}.conf_TEMP
+   echo "bind=$IPONE" >> ${NAME}.conf_TEMP
+   echo "masternodeaddr=$IPONE:55002" >> ${NAME}.conf_TEMP
   
    if [ -z "$PRIVKEY" ]; then
       echo ""
@@ -287,7 +290,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    fi
 
    sudo ufw allow $PORT/tcp
-   mv ${NAME}.conf_TEMP $CONF_DIR/monkey.conf
+   mv ${NAME}.conf_TEMP $CONF_DIR/wagerr.conf
  
    if [ -z "$PRIVKEY" ]; then
 	   PID=`ps -ef | grep -i ${NAME} | grep -i ${ALIASONE}/ | grep -v grep | awk '{print $2}'`
@@ -302,7 +305,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   do  
 	      echo "Please wait ..."
          sleep 2
-	      PRIVKEY=$(~/bin/monkey-cli_${ALIASONE}.sh masternode genkey)
+	      PRIVKEY=$(~/bin/monkey-cli_${ALIASONE}.sh createmasternodekey)
 	      echo "PRIVKEY=$PRIVKEY"
 	      if [ -z "$PRIVKEY" ]; then
 	         echo "PRIVKEY is null"
@@ -362,7 +365,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    fi		  
 
   
-   MNCONFIG=$(echo $ALIAS $IPONE:$PORT $PRIVKEY "txhash" "outputidx")
+   MNCONFIG=$(echo $ALIAS $IPONE:55002 $PRIVKEY "txhash" "outputidx")
    echo $MNCONFIG >> ~/bin/masternode_config.txt
   
    if [[ ${REBOOTRESTART,,} =~ "y" ]] ; then
