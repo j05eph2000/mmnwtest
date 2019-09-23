@@ -21,7 +21,7 @@ CONF_FILE="${NAME}.conf"
 CONF_DIR_TMP=~/"${NAME}_tmp"
 BOOTSTRAPURL="https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip"
 PORT=55002
-RPCPORT=$PORT*10
+RPCPORT=550020
 
 cd ~
 echo "******************************************************************************"
@@ -304,7 +304,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   for (( ; ; ))
 	   do  
 	      echo "Please wait ..."
-         sleep 2
+         sleep 10
 	      PRIVKEY=$(~/bin/wagerr-cli_${ALIASONE}.sh createmasternodekey)
 	      echo "PRIVKEY=$PRIVKEY"
 	      if [ -z "$PRIVKEY" ]; then
@@ -314,7 +314,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
          fi
 	   done
 	
-	   sleep 1
+	   sleep 10
 	
 	   for (( ; ; ))
 	   do
@@ -326,12 +326,12 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 		      ~/bin/wagerr-cli_$ALIAS.sh stop
 		   fi
 		   echo "Please wait ..."
-		   sleep 5 # wait 2 seconds 
+		   sleep 10 # wait 2 seconds 
 		   PID=`ps -ef | grep -i ${NAME} | grep -i ${ALIAS}/ | grep -v grep | awk '{print $2}'`
 		   echo "PID="$PID	
 		
 		   if [ -z "$PID" ]; then
-		      sleep 1 # wait 1 second
+		      sleep 10 # wait 1 second
 		      echo "masternode=1" >> $CONF_DIR/wagerr.conf
 		      echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/wagerr.conf
 		      break
@@ -339,7 +339,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   done
    fi
   
-   sleep 2
+   sleep 10
    PID=`ps -ef | grep -i ${NAME} | grep -i ${ALIAS}/ | grep -v grep | awk '{print $2}'`
    echo "PID="$PID
   
@@ -347,7 +347,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
       echo ""
    else
       ~/bin/wagerr-cli_$ALIAS.sh stop
-	   sleep 2 # wait 2 seconds 
+	   sleep 10 # wait 2 seconds 
    fi	
   
    if [ -z "$PID" ]; then
@@ -361,7 +361,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
       #unzip  bootstrap.zip
       #rm ./bootstrap.zip
       sh ~/bin/${NAME}d_$ALIAS.sh		
-      sleep 2 # wait 2 seconds 
+      sleep 10 # wait 2 seconds 
    fi		  
 
   
