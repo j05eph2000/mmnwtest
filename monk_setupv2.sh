@@ -298,7 +298,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   if [ -z "$PID" ]; then
          # start wallet
          sh ~/bin/${NAME}d_$ALIASONE.sh  
-	      sleep 1
+	      sleep 30
 	   fi
   
 	   for (( ; ; ))
@@ -326,7 +326,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 		      ~/bin/wagerr-cli_$ALIAS.sh stop
 		   fi
 		   echo "Please wait ..."
-		   sleep 2 # wait 2 seconds 
+		   sleep 5 # wait 2 seconds 
 		   PID=`ps -ef | grep -i ${NAME} | grep -i ${ALIAS}/ | grep -v grep | awk '{print $2}'`
 		   echo "PID="$PID	
 		
