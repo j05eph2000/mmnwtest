@@ -279,7 +279,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 
    echo "" >> ${NAME}.conf_TEMP
    echo "port=$PORT" >> ${NAME}.conf_TEMP
-   echo "bind=$IPONE" >> ${NAME}.conf_TEMP
+   #echo "bind=$IPONE" >> ${NAME}.conf_TEMP
    echo "masternodeaddr=$IPONE:55002" >> ${NAME}.conf_TEMP
   
    if [ -z "$PRIVKEY" ]; then
