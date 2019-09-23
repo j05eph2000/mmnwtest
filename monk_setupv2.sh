@@ -305,7 +305,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   do  
 	      echo "Please wait ..."
          sleep 2
-	      PRIVKEY=$(~/bin/monkey-cli_${ALIASONE}.sh createmasternodekey)
+	      PRIVKEY=$(~/bin/wagerr-cli_${ALIASONE}.sh createmasternodekey)
 	      echo "PRIVKEY=$PRIVKEY"
 	      if [ -z "$PRIVKEY" ]; then
 	         echo "PRIVKEY is null"
@@ -323,7 +323,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 		      echo ""
 		   else
 		      #STOP 
-		      ~/bin/monkey-cli_$ALIAS.sh stop
+		      ~/bin/wagerr-cli_$ALIAS.sh stop
 		   fi
 		   echo "Please wait ..."
 		   sleep 2 # wait 2 seconds 
@@ -332,8 +332,8 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 		
 		   if [ -z "$PID" ]; then
 		      sleep 1 # wait 1 second
-		      echo "masternode=1" >> $CONF_DIR/monkey.conf
-		      echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/monkey.conf
+		      echo "masternode=1" >> $CONF_DIR/wagerr.conf
+		      echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/wagerr.conf
 		      break
 	      fi
 	   done
@@ -346,7 +346,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    if [ -z "$PID" ]; then
       echo ""
    else
-      ~/bin/monkey-cli_$ALIAS.sh stop
+      ~/bin/wagerr-cli_$ALIAS.sh stop
 	   sleep 2 # wait 2 seconds 
    fi	
   
