@@ -271,7 +271,7 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
    echo "rpcallowip=127.0.0.1" >> ${NAME}.conf_TEMP
    echo "rpcport=$RPCPORT" >> ${NAME}.conf_TEMP
    echo "port=$PORT" >> ${NAME}.conf_TEMP
-   echo "listen=0" >> ${NAME}.conf_TEMP
+   echo "listen=1" >> ${NAME}.conf_TEMP
    echo "server=1" >> ${NAME}.conf_TEMP
    echo "daemon=1" >> ${NAME}.conf_TEMP
    echo "logtimestamps=1" >> ${NAME}.conf_TEMP
