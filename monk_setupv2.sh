@@ -181,7 +181,7 @@ fi
 mkdir -p $CONF_DIR_TMP   
 cd $CONF_DIR_TMP  
 echo "Copy BLOCKCHAIN without conf files"
-wget ${BOOTSTRAPURL} -O bootstrap.zip
+#wget ${BOOTSTRAPURL} -O bootstrap.zip
 cd ~
 
 for STARTNUMBER in `seq 1 1 $MNCOUNT`; do 
@@ -357,9 +357,9 @@ for STARTNUMBER in `seq 1 1 $MNCOUNT`; do
 	   rm -R ./blocks	&>/dev/null &
 	   rm -R ./sporks &>/dev/null &
 	   rm -R ./chainstate &>/dev/null &
-      cp $CONF_DIR_TMP/bootstrap.zip .
-      unzip  bootstrap.zip
-      rm ./bootstrap.zip
+      #cp $CONF_DIR_TMP/bootstrap.zip .
+      #unzip  bootstrap.zip
+      #rm ./bootstrap.zip
       sh ~/bin/${NAME}d_$ALIAS.sh		
       sleep 2 # wait 2 seconds 
    fi		  
